@@ -33,9 +33,16 @@ import java.util.List;
  * monitor: 640 x 480
  *YES
  */
-@Autonomous(name= "OpenCVTest")
-public class OpenCV extends LinearOpMode {
+@Autonomous(name= "OpenCVmovement")
+public class OpenCVMovement extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
+    //motors
+    private DcMotor leftbackDrive;
+    private DcMotor rightbackDrive;
+    private DcMotor leftfrontDrive;
+    private DcMotor rightfrontDrive;
+
+
 
     //0 means black, 1 means yellow
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
@@ -59,14 +66,34 @@ public class OpenCV extends LinearOpMode {
 
     OpenCvCamera phoneCam;
 
+    public void movement(int left, int right,int time ){
+        leftbackDrive.setPower(left);
+        rightbackDrive.setPower(left);
+        leftfrontDrive.setPower(right);
+        rightfrontDrive.setPower(right);
+        sleep(time);
+    }
+
     @Override
     public void runOpMode() throws InterruptedException {
+        // motors mapping
+        leftbackDrive = hardwareMap.get(DcMotor.class, "BLM");
+        rightbackDrive = hardwareMap.get(DcMotor.class, "BRM");
+        leftfrontDrive = hardwareMap.get(DcMotor.class, "FLM");
+        rightfrontDrive = hardwareMap.get(DcMotor.class, "FRM");
+
+        // Reverse the motor that runs backwards when connected directly to the REV hub
+        leftbackDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightbackDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftfrontDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightfrontDrive.setDirection(DcMotor.Direction.REVERSE);
+
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
         //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
         phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
-        //phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
+         //phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
 
         phoneCam.openCameraDevice();//open camera
         phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
@@ -83,6 +110,11 @@ public class OpenCV extends LinearOpMode {
 
             telemetry.update();
             sleep(100);
+            movement(1,1,1500);
+            if (valLeft == 0 && valMid == 0 && valRight == 0) {
+                break;
+            }
+            movement(-1,-1,1500);
         }
     }
 
