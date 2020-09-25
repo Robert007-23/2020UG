@@ -36,12 +36,12 @@ import java.util.List;
 @Autonomous(name= "OpenCVmovement")
 public class OpenCVMovement extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
+
     //motors
     private DcMotor leftbackDrive;
     private DcMotor rightbackDrive;
     private DcMotor leftfrontDrive;
     private DcMotor rightfrontDrive;
-
 
 
     //0 means black, 1 means yellow
@@ -103,6 +103,7 @@ public class OpenCVMovement extends LinearOpMode {
 
         waitForStart();
         runtime.reset();
+
         while (opModeIsActive()) {
             telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
             telemetry.addData("Height", rows);
@@ -110,11 +111,12 @@ public class OpenCVMovement extends LinearOpMode {
 
             telemetry.update();
             sleep(100);
-            movement(1,1,1500);
-            if (valLeft == 0 && valMid == 0 && valRight == 0) {
-                break;
+            if ( time == 5 && valLeft == 0 && valMid == 0 && valRight == 0){
+                movement(1,1,1500);
+                movement(-1,-1,1500);
+            }else if( time == 5 && valLeft == 255 && valMid == 255 && valRight == 255){
+                movement(1,1,1500);
             }
-            movement(-1,-1,1500);
         }
     }
 
