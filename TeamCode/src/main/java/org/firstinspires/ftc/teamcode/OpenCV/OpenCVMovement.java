@@ -63,7 +63,7 @@ public class OpenCVMovement extends LinearOpMode {
 
     OpenCvCamera phoneCam;
 
-    public void movement(int left, int right,int time ){
+    public void movement(double left, double right,int time ){
         leftbackDrive.setPower(left);
         rightbackDrive.setPower(left);
         leftfrontDrive.setPower(right);
@@ -102,17 +102,17 @@ public class OpenCVMovement extends LinearOpMode {
         runtime.reset();
 
         while (opModeIsActive()) {
-            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
+            telemetry.addData("Values", valLeft + "   " + valMid + "   " + valRight);
             telemetry.addData("Height", rows);
             telemetry.addData("Width", cols);
-
+            telemetry.addData("Time", time);
             telemetry.update();
             sleep(100);
-            if ( time == 5 && valLeft == 0 && valMid == 0 && valRight == 0){
-                movement(1,1,1500);
-                movement(-1,-1,1500);
-            }else if( time == 5 && valLeft == 255 && valMid == 255 && valRight == 255){
-                movement(1,1,1500);
+            if ( time >= 5 && valLeft == 0 && valMid == 0 && valRight == 0){
+                movement(0.4,0.4,1500);
+            }else if( time >= 5 && valLeft == 255 && valMid == 255 && valRight == 255){
+                movement(0.4,0.4,1500);
+                movement(-0.4,-0.4,1500);
 
             }
         }

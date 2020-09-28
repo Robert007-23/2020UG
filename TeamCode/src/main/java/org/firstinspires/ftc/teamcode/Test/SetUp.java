@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
+/*this is the Class used for setup*/
 public class SetUp extends LinearOpMode {
-
+//this this where name will be stated
     DcMotor m_leftBack;
     DcMotor m_leftFront;
     DcMotor m_rightBack;
@@ -26,6 +26,7 @@ public class SetUp extends LinearOpMode {
 
 
     }
+    /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
     public void movement(int left, int right,int time ){
         m_leftBack.setPower(left);
