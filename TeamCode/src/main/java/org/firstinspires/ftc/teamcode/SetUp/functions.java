@@ -1,17 +1,14 @@
-package org.firstinspires.ftc.teamcode.Auto;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.DcMotor;
+package org.firstinspires.ftc.teamcode.SetUp;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
-
-@Autonomous (name = "MyFirstAuto")
-public class MyFirstAuto extends LinearOpMode{
-
+import com.qualcomm.robotcore.hardware.DcMotor;
+/*this is the Class used for setup*/
+public class functions extends LinearOpMode {
+    //this this where name will be stated
     DcMotor m_leftBack;
     DcMotor m_leftFront;
     DcMotor m_rightBack;
     DcMotor m_rightFront;
-
 
     public void runOpMode() {
 
@@ -27,18 +24,19 @@ public class MyFirstAuto extends LinearOpMode{
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
 
-        waitForStart();// this ask the phone for when you press the start button.
-        movement(1,1,1500);
-        movement(-1,-1,1600);
 
     }
+    /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
-    public void movement(int left, int right,int time ){
+    public void movement(double left, double right,int time ){
         m_leftBack.setPower(left);
         m_leftFront.setPower(left);
         m_rightBack.setPower(right);
         m_rightFront.setPower(right);
         sleep(time);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
     }
-
 }

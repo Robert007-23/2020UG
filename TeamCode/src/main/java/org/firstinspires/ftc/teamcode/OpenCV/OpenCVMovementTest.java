@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.OpenCV;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.opencv.core.Core;
@@ -30,23 +29,15 @@ import java.util.List;
  * monitor: 640 x 480
  *YES
  */
-@Autonomous(name= "OpenCVmovement")
-public class OpenCVMovement extends LinearOpMode {
+@Autonomous(name= "OpenCVMovementTest")
+public class OpenCVMovementTest extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
-
-    //motors
-    private DcMotor leftbackDrive;
-    private DcMotor rightbackDrive;
-    private DcMotor leftfrontDrive;
-    private DcMotor rightfrontDrive;
-
 
     //0 means black, 1 means yellow
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
     private static int valMid = -1;
     private static int valLeft = -1;
     private static int valRight = -1;
-    private static int Yellow = -1;
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
@@ -64,38 +55,14 @@ public class OpenCVMovement extends LinearOpMode {
 
     OpenCvCamera phoneCam;
 
-    public void movement(double left, double right,int time ){
-        leftbackDrive.setPower(left);
-        rightbackDrive.setPower(left);
-        leftfrontDrive.setPower(right);
-        rightfrontDrive.setPower(right);
-        sleep(time);
-        leftbackDrive.setPower(0);
-        rightbackDrive.setPower(0);
-        leftfrontDrive.setPower(0);
-        rightfrontDrive.setPower(0);
-    }
-
     @Override
     public void runOpMode() throws InterruptedException {
-        // motors mapping
-        leftbackDrive = hardwareMap.get(DcMotor.class, "BLM");
-        rightbackDrive = hardwareMap.get(DcMotor.class, "BRM");
-        leftfrontDrive = hardwareMap.get(DcMotor.class, "FLM");
-        rightfrontDrive = hardwareMap.get(DcMotor.class, "FRM");
-
-        // Reverse the motor that runs backwards when connected directly to the REV hub
-        leftbackDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightbackDrive.setDirection(DcMotor.Direction.FORWARD);
-        leftfrontDrive.setDirection(DcMotor.Direction.REVERSE);
-        rightfrontDrive.setDirection(DcMotor.Direction.FORWARD);
-
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
         //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
         phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
-         //phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
+        //phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
 
         phoneCam.openCameraDevice();//open camera
         phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
@@ -105,23 +72,13 @@ public class OpenCVMovement extends LinearOpMode {
 
         waitForStart();
         runtime.reset();
-
         while (opModeIsActive()) {
-            telemetry.addData("Values", valLeft + "   " + valMid + "   " + valRight);
+            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
             telemetry.addData("Height", rows);
             telemetry.addData("Width", cols);
-            telemetry.addData("Time", time);
-            telemetry.addData("Yellow", Yellow);
+
             telemetry.update();
             sleep(100);
-            if ( time >= 5 && time <= 6 && valLeft == 0 && valMid == 0 && valRight == 0){
-                movement(0.4,0.4,1500);
-                Yellow = 1;
-            }else if( time >= 5 && time <= 6 && valLeft == 255 && valMid == 255 && valRight == 255){
-                movement(0.4,0.4,1500);
-                movement(-0.4,-0.4,1500);
-                Yellow = 2;
-            }
         }
     }
 
