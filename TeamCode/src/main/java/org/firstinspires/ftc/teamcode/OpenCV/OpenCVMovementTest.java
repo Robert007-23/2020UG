@@ -33,7 +33,7 @@ import java.util.List;
  */
 @Autonomous(name= "OpenCVMovementTest")
 public class OpenCVMovementTest extends LinearOpMode {
-    functions Robot=new functions();// this call unpon the
+    functions Robot=new functions();// this call unpon the functions class for its functions
     private ElapsedTime runtime = new ElapsedTime();
 
     //0 means other, 255 means yellow
@@ -88,21 +88,25 @@ public class OpenCVMovementTest extends LinearOpMode {
             if (time >= 5 && time <= 6){
                 switch (Yellow){
                     case   0:
+                        Robot.movement(0.25,0.25,2000);
                         telemetry.clear();
                         telemetry.addLine("No yellow");
                         telemetry.update();
                         break;
                     case 255:
+                        Robot.movement(0.25, -0.25, 2000);
                         telemetry.clear();
                         telemetry.addLine("A little Yellow");
                         telemetry.update();
                         break;
                     case 510:
+                        Robot.movement(-0.25, 0.25,2000);
                         telemetry.clear();
                         telemetry.addLine("Some Yellow");
                         telemetry.update();
                         break;
                     case 765:
+                        Robot.movement(-0.25,-0.25, 2000);
                         telemetry.clear();
                         telemetry.addLine("All yellow");
                         telemetry.update();
