@@ -28,7 +28,7 @@ public class SetUp extends LinearOpMode {
     }
     /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
-    public void movement(int left, int right,int time ){
+    public void movement(double left, double right, int time ){
         m_leftBack.setPower(left);
         m_leftFront.setPower(left);
         m_rightBack.setPower(right);

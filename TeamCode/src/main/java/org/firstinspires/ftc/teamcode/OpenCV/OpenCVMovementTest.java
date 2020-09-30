@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.SetUp.functions;
+import org.firstinspires.ftc.teamcode.Test.SetUp;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
@@ -31,13 +33,16 @@ import java.util.List;
  */
 @Autonomous(name= "OpenCVMovementTest")
 public class OpenCVMovementTest extends LinearOpMode {
+    functions Robot=new functions();// this call unpon the
     private ElapsedTime runtime = new ElapsedTime();
 
-    //0 means black, 1 means yellow
+    //0 means other, 255 means yellow
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
     private static int valMid = -1;
     private static int valLeft = -1;
     private static int valRight = -1;
+    private static int Yellow = -1;
+
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
@@ -76,9 +81,40 @@ public class OpenCVMovementTest extends LinearOpMode {
             telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
             telemetry.addData("Height", rows);
             telemetry.addData("Width", cols);
-
+            telemetry.addData("Time", time);
+            telemetry.addData("Yellow%", Yellow);
             telemetry.update();
-            sleep(100);
+            Yellow = valLeft + valMid + valRight;
+            if (time >= 5 && time <= 6){
+                switch (Yellow){
+                    case   0:
+                        telemetry.clear();
+                        telemetry.addLine("No yellow");
+                        telemetry.update();
+                        break;
+                    case 255:
+                        telemetry.clear();
+                        telemetry.addLine("A little Yellow");
+                        telemetry.update();
+                        break;
+                    case 510:
+                        telemetry.clear();
+                        telemetry.addLine("Some Yellow");
+                        telemetry.update();
+                        break;
+                    case 765:
+                        telemetry.clear();
+                        telemetry.addLine("All yellow");
+                        telemetry.update();
+                        break;
+                    default:
+                        telemetry.clear();
+                        telemetry.addLine("Error_Code= -1");
+                        telemetry.update();
+                        break;
+                }
+                sleep(10000);
+            }
         }
     }
 

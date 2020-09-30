@@ -39,4 +39,5 @@ public class functions extends LinearOpMode {
         m_rightBack.setPower(0);
         m_rightFront.setPower(0);
     }
+
 }
