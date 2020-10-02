@@ -62,7 +62,7 @@ public class OpenCVMovementTest extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-
+        Robot.setup();//this takes care of the setup for motors in one line of code
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
         //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
@@ -88,7 +88,7 @@ public class OpenCVMovementTest extends LinearOpMode {
             if (time >= 5 && time <= 6){
                 switch (Yellow){
                     case   0:
-                        Robot.movement(0.25,0.25,2000);
+                        Robot.movement(1,1,2000);
                         telemetry.clear();
                         telemetry.addLine("No yellow");
                         telemetry.update();
