@@ -17,17 +17,6 @@ public class functions extends LinearOpMode {
     }
     /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
-    public void movement(double left, double right,int time ){
-        m_leftBack.setPower(left);
-        m_leftFront.setPower(left);
-        m_rightBack.setPower(right);
-        m_rightFront.setPower(right);
-        sleep(time);
-        m_leftBack.setPower(0);
-        m_leftFront.setPower(0);
-        m_rightBack.setPower(0);
-        m_rightFront.setPower(0);
-    }
 
     public void setup(){
         DcMotor m_leftBack;
@@ -49,7 +38,19 @@ public class functions extends LinearOpMode {
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
         m_rightFront.setDirection(DcMotor.Direction.FORWARD);
 
-
     }
+
+    public void movement(double left, double right,int time ){
+        m_leftBack.setPower(left);
+        m_leftFront.setPower(left);
+        m_rightBack.setPower(right);
+        m_rightFront.setPower(right);
+        sleep(time);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
+    }
+
 
 }
