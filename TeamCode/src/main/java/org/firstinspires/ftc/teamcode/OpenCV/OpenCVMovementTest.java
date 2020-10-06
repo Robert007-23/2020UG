@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpenCV;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.SetUp.functions;
@@ -31,8 +30,7 @@ import java.util.List;
  *YES
  */
 @Autonomous(name= "OpenCVMovementTest")
-public class OpenCVMovementTest extends LinearOpMode {
-    functions Robot=new functions();// this call unpon the functions class for its functions
+public class OpenCVMovementTest extends functions {
     private ElapsedTime runtime = new ElapsedTime();
 
     //0 means other, 255 means yellow
@@ -59,9 +57,13 @@ public class OpenCVMovementTest extends LinearOpMode {
 
     OpenCvCamera phoneCam;
 
+
+
+
+
     @Override
-    public void runOpMode() throws InterruptedException {
-        Robot.setup();//this takes care of the setup for motors in one line of code
+    public void runOpMode()  {
+        setup();
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
         //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
@@ -87,25 +89,25 @@ public class OpenCVMovementTest extends LinearOpMode {
             if (time >= 5 && time <= 6){
                 switch (Yellow){
                     case   0:
-                        Robot.movement(1,1,2000);
+                        movement(1,1,2000);
                         telemetry.clear();
                         telemetry.addLine("No yellow");
                         telemetry.update();
                         break;
                     case 255:
-                        Robot.movement(0.25, -0.25, 2000);
+                        movement(0.25, -0.25, 2000);
                         telemetry.clear();
                         telemetry.addLine("A little Yellow");
                         telemetry.update();
                         break;
                     case 510:
-                        Robot.movement(-0.25, 0.25,2000);
+                        movement(-0.25, 0.25,2000);
                         telemetry.clear();
                         telemetry.addLine("Some Yellow");
                         telemetry.update();
                         break;
                     case 765:
-                        Robot.movement(-0.25,-0.25, 2000);
+                        movement(-0.25,-0.25, 2000);
                         telemetry.clear();
                         telemetry.addLine("All yellow");
                         telemetry.update();

@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 /*this is the Class used for setup*/
 public class SetUp extends LinearOpMode {
 //this this where name will be stated
-    DcMotor m_leftBack;
-    DcMotor m_leftFront;
-    DcMotor m_rightBack;
-    DcMotor m_rightFront;
+   public DcMotor m_leftBack;
+   public DcMotor m_leftFront;
+   public DcMotor m_rightBack;
+   public DcMotor m_rightFront;
 
     public void runOpMode() {
 
@@ -28,6 +28,14 @@ public class SetUp extends LinearOpMode {
     }
     /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
+    public void setup(){
+        m_leftBack = hardwareMap.get(DcMotor.class, "BLM");
+        m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
+        m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
+        m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
+
+    }
+
     public void movement(double left, double right, int time ){
         m_leftBack.setPower(left);
         m_leftFront.setPower(left);
