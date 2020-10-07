@@ -4,11 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
+
     //this this where name will be stated
     public DcMotor m_leftBack;
     public DcMotor m_leftFront;
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
+
 
     public void runOpMode() {
 
