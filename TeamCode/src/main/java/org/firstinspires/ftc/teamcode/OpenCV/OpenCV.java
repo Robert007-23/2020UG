@@ -141,7 +141,7 @@ public class OpenCV extends LinearOpMode {
             //outline/contour
             Imgproc.findContours(thresholdMat, contoursList, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
             yCbCrChan2Mat.copyTo(all);//copies mat object
-            //Imgproc.drawContours(all, contoursList, -1, new Scalar(255, 0, 0), 3, 8);//draws blue contours
+            Imgproc.drawContours(all, contoursList, -1, new Scalar(255, 0, 0), 3, 8);//draws blue contours
 
 
             //get values from frame
