@@ -59,6 +59,19 @@ public class MyFirstTeleOp extends LinearOpMode {
                 leftfrontDrive.setPower(1);
                 rightbackDrive.setPower(1);
                 rightfrontDrive.setPower(1);
+
+                double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
+                double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
+                double rightX = gamepad1.right_stick_x;
+                final double v1 = r * Math.cos(robotAngle) + rightX;
+                final double v2 = r * Math.sin(robotAngle) - rightX;
+                final double v3 = r * Math.sin(robotAngle) + rightX;
+                final double v4 = r * Math.cos(robotAngle) - rightX;
+
+                leftfrontDrive.setPower(v1);
+                rightfrontDrive.setPower(v2);
+                leftbackDrive.setPower(v3);
+                rightbackDrive.setPower(v4);
             }
         }
     }
