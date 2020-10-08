@@ -115,7 +115,7 @@ public class OpenCVMovementTest extends functions {
                         break;
                     default:
                         telemetry.clear();
-                        telemetry.addLine("Error_Code= -1,Please Retry :P");
+                        telemetry.addLine("Error_Code= -1,Please Retry :P or check variables again");
                         telemetry.update();
                         break;
                 }
