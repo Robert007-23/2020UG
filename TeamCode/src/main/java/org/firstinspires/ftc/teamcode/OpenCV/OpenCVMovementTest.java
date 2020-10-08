@@ -92,30 +92,30 @@ public class OpenCVMovementTest extends functions {
                     case   0:
                         movement(1,1,2000);
                         telemetry.clear();
-                        telemetry.addLine("No yellow");
+                        telemetry.addLine("No Orange 'o' ");
                         telemetry.update();
                         break;
                     case 255:
                         movement(0.25, -0.25, 2000);
                         telemetry.clear();
-                        telemetry.addLine("A little Yellow");
+                        telemetry.addLine("A little Orange (Ring) -_-");
                         telemetry.update();
                         break;
                     case 510:
                         movement(-0.25, 0.25,2000);
                         telemetry.clear();
-                        telemetry.addLine("Some Yellow");
+                        telemetry.addLine("Some Orange (Ring) 0-0");
                         telemetry.update();
                         break;
                     case 765:
                         movement(-0.25,-0.25, 2000);
                         telemetry.clear();
-                        telemetry.addLine("All yellow");
+                        telemetry.addLine("All Orange (Ring) :)");
                         telemetry.update();
                         break;
                     default:
                         telemetry.clear();
-                        telemetry.addLine("Error_Code= -1");
+                        telemetry.addLine("Error_Code= -1,Please Retry :P");
                         telemetry.update();
                         break;
                 }
