@@ -59,7 +59,7 @@ public class MyFirstTeleOp extends LinearOpMode {
                 leftfrontDrive.setPower(1);
                 rightbackDrive.setPower(1);
                 rightfrontDrive.setPower(1);
-            } 
+            }
         }
     }
 }
