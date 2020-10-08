@@ -7,10 +7,11 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
     //this this where name will be stated
-    DcMotor m_leftBack;
-    DcMotor m_leftFront;
-    DcMotor m_rightBack;
-    DcMotor m_rightFront;
+    public DcMotor m_leftBack;
+    public DcMotor m_leftFront;
+    public DcMotor m_rightBack;
+    public DcMotor m_rightFront;
+
 
     public void runOpMode() {
             setup();
@@ -19,10 +20,7 @@ public class functions extends LinearOpMode {
     // this makes a functions so that you can use it over and over
 
     public void setup(){
-        DcMotor m_leftBack;
-        DcMotor m_leftFront;
-        DcMotor m_rightBack;
-        DcMotor m_rightFront;
+      
 
         /*********DEFINING HARDWARE***************************************/
 
