@@ -32,9 +32,10 @@ public class MyFirstTeleOp extends LinearOpMode {
         leftfrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightfrontDrive.setDirection(DcMotor.Direction.REVERSE);
 
+
         waitForStart();// this ask the phone for when you press the start button.
 
-        while (opModeIsActive()){
+        while (opModeIsActive()) {
 
             // Ignore this code
             //double multiplier = Range.clip(rawSpeedMultiplier - gamepad1.right_trigger, 2, 1);
@@ -46,20 +47,8 @@ public class MyFirstTeleOp extends LinearOpMode {
 
             //tank drive: The left stick controls the left wheels while the right stick controls the right wheels
             double leftPower = Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -1, 1);
-            double rightPower = Range.clip(gamepad1.right_stick_y + gamepad1.right_stick_x,-1 ,1);
-
-            leftbackDrive.setPower(leftPower);
-            leftfrontDrive.setPower(leftPower);
-            rightbackDrive.setPower(rightPower);
-            rightfrontDrive.setPower(rightPower);
-
-            if(gamepad1.a){ // this looks for if you press the "A" button
-
-                leftbackDrive.setPower(1);
-                leftfrontDrive.setPower(1);
-                rightbackDrive.setPower(1);
-                rightfrontDrive.setPower(1);
-
+            double rightPower = Range.clip(gamepad1.right_stick_y + gamepad1.right_stick_x, -1, 1);
+            {
                 double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
                 double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
                 double rightX = gamepad1.right_stick_x;
@@ -72,6 +61,22 @@ public class MyFirstTeleOp extends LinearOpMode {
                 rightfrontDrive.setPower(v2);
                 leftbackDrive.setPower(v3);
                 rightbackDrive.setPower(v4);
+            }
+
+            leftbackDrive.setPower(leftPower);
+            leftfrontDrive.setPower(leftPower);
+            rightbackDrive.setPower(rightPower);
+            rightfrontDrive.setPower(rightPower);
+
+
+            if(gamepad1.a){ // this looks for if you press the "A" button
+
+                leftbackDrive.setPower(1);
+                leftfrontDrive.setPower(1);
+                rightbackDrive.setPower(1);
+                rightfrontDrive.setPower(1);
+
+
             }
         }
     }
