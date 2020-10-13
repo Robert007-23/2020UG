@@ -20,7 +20,6 @@ public class functions extends LinearOpMode {
     // this makes a functions so that you can use it over and over
 
     public void setup(){
-      
 
         /*********DEFINING HARDWARE***************************************/
 
