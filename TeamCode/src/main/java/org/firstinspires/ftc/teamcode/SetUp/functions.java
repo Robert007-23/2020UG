@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.SetUp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
 
@@ -11,8 +13,13 @@ public class functions extends LinearOpMode {
     public DcMotor rightbackDrive;
     public DcMotor rightfrontDrive;
 
-
     public void runOpMode() {
+            setup();
+    }
+    /**this is were all functions will go to be used later**/
+    // this makes a functions so that you can use it over and over
+
+    public void setup(){
 
         /*********DEFINING HARDWARE***************************************/
 
@@ -23,25 +30,14 @@ public class functions extends LinearOpMode {
         rightfrontDrive = hardwareMap.get(DcMotor.class, "FRM");
 
         //Reversing some of the motor directions to make driving easier
-        leftfrontDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftbackDrive.setDirection(DcMotor.Direction.REVERSE);
-
-
-    }
-    /**this is were all functions will go to be used later**/
-    // this makes a functions so that you can use it over and over
-    public void setup(){
-        //Motors
-        leftbackDrive = hardwareMap.get(DcMotor.class, "BLM");
-        leftfrontDrive = hardwareMap.get(DcMotor.class, "FLM");
-        rightbackDrive = hardwareMap.get(DcMotor.class, "BRM");
-        rightfrontDrive = hardwareMap.get(DcMotor.class, "FRM");
-
-        //Reversing some of the motor directions to make driving easier
-        leftfrontDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftbackDrive.setDirection(DcMotor.Direction.REVERSE);
+        m_leftFront.setDirection(DcMotor.Direction.REVERSE);
+        m_leftBack.setDirection(DcMotor.Direction.REVERSE);
+        m_rightBack.setDirection(DcMotor.Direction.FORWARD);
+        m_rightFront.setDirection(DcMotor.Direction.FORWARD);
 
     }
+
+
 
     public void movement(double left, double right, int time ){
         leftbackDrive.setPower(left);
@@ -54,18 +50,17 @@ public class functions extends LinearOpMode {
         rightbackDrive.setPower(0);
         rightfrontDrive.setPower(0);
     }
-    public void strafe(){
-        double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
-        double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
-        double rightX = gamepad1.right_stick_x;
-        final double v1 = r * Math.cos(robotAngle) + rightX;
-        final double v2 = r * Math.sin(robotAngle) - rightX;
-        final double v3 = r * Math.sin(robotAngle) + rightX;
-        final double v4 = r * Math.cos(robotAngle) - rightX;
 
-        leftfrontDrive.setPower(v1);
-        rightfrontDrive.setPower(v2);
-        leftbackDrive.setPower(v3);
-        rightbackDrive.setPower(v4);
+      public void Strafing(double power, int time){
+        m_leftBack.setPower(power);
+        m_leftFront.setPower(-power);
+        m_rightBack.setPower(-power);
+        m_rightFront.setPower(power);
+        sleep(time);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
     }
+
 }

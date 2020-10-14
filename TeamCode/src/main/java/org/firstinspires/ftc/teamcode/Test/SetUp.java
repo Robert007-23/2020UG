@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 /*this is the Class used for setup*/
 public class SetUp extends LinearOpMode {
-//this this where name will be stated
+//this this where names will be stated
    public DcMotor m_leftBack;
    public DcMotor m_leftFront;
    public DcMotor m_rightBack;
@@ -15,14 +15,14 @@ public class SetUp extends LinearOpMode {
         /*********DEFINING HARDWARE***************************************/
 
         //Motors
-        m_leftBack = hardwareMap.get(DcMotor.class, "BLM");
-        m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
-        m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
-        m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
-
-        //Reversing some of the motor directions to make driving easier
-        m_leftFront.setDirection(DcMotor.Direction.REVERSE);
-        m_leftBack.setDirection(DcMotor.Direction.REVERSE);
+//        m_leftBack = hardwareMap.get(DcMotor.class, "BLM");
+//        m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
+//        m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
+//        m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
+//
+//        //Reversing some of the motor directions to make driving easier
+//        m_leftFront.setDirection(DcMotor.Direction.REVERSE);
+//        m_leftBack.setDirection(DcMotor.Direction.REVERSE);
 
 
     }
