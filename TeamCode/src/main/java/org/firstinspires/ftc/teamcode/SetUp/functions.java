@@ -11,6 +11,7 @@ public class functions extends LinearOpMode {
     public DcMotor m_leftFront;
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
+    public DcMotor m_intake;
 
 
     public void runOpMode() {
@@ -28,6 +29,8 @@ public class functions extends LinearOpMode {
         m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
         m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
+
+        m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
 
         //Reversing some of the motor directions to make driving easier
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
@@ -49,5 +52,22 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
+    public void Intake(double power, int time){
+        m_intake.setPower(power);
+        sleep(time);
+        m_intake.setPower(0);
+    }
+
+    public void Strafing(double power, int time){
+        m_leftBack.setPower(power);
+        m_leftFront.setPower(-power);
+        m_rightBack.setPower(-power);
+        m_rightFront.setPower(power);
+        sleep(time);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
+    }
 
 }
