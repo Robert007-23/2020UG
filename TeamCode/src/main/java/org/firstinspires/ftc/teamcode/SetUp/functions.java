@@ -49,5 +49,16 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
+    public void Strafing(double power, int time){
+        m_leftBack.setPower(power);
+        m_leftFront.setPower(-power);
+        m_rightBack.setPower(-power);
+        m_rightFront.setPower(power);
+        sleep(time);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
+    }
 
 }
