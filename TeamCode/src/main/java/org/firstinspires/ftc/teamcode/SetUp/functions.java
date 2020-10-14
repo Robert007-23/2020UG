@@ -6,12 +6,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
-    //this this where name will be stated
-    public DcMotor m_leftBack;
-    public DcMotor m_leftFront;
-    public DcMotor m_rightBack;
-    public DcMotor m_rightFront;
 
+    //this this where name will be stated
+    public DcMotor leftbackDrive;
+    public DcMotor leftfrontDrive;
+    public DcMotor rightbackDrive;
+    public DcMotor rightfrontDrive;
 
     public void runOpMode() {
             setup();
@@ -24,10 +24,10 @@ public class functions extends LinearOpMode {
         /*********DEFINING HARDWARE***************************************/
 
         //Motors
-        m_leftBack = hardwareMap.get(DcMotor.class, "BLM");
-        m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
-        m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
-        m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
+        leftbackDrive = hardwareMap.get(DcMotor.class, "BLM");
+        leftfrontDrive = hardwareMap.get(DcMotor.class, "FLM");
+        rightbackDrive = hardwareMap.get(DcMotor.class, "BRM");
+        rightfrontDrive = hardwareMap.get(DcMotor.class, "FRM");
 
         //Reversing some of the motor directions to make driving easier
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
@@ -37,17 +37,30 @@ public class functions extends LinearOpMode {
 
     }
 
-    public void movement(double left, double right,int time ){
-        m_leftBack.setPower(left);
-        m_leftFront.setPower(left);
-        m_rightBack.setPower(right);
-        m_rightFront.setPower(right);
+
+
+    public void movement(double left, double right, int time ){
+        leftbackDrive.setPower(left);
+        leftfrontDrive.setPower(left);
+        rightbackDrive.setPower(right);
+        rightfrontDrive.setPower(right);
+        sleep(time);
+        leftbackDrive.setPower(0);
+        leftfrontDrive.setPower(0);
+        rightbackDrive.setPower(0);
+        rightfrontDrive.setPower(0);
+    }
+
+      public void Strafing(double power, int time){
+        m_leftBack.setPower(power);
+        m_leftFront.setPower(-power);
+        m_rightBack.setPower(-power);
+        m_rightFront.setPower(power);
         sleep(time);
         m_leftBack.setPower(0);
         m_leftFront.setPower(0);
         m_rightBack.setPower(0);
         m_rightFront.setPower(0);
     }
-
 
 }
