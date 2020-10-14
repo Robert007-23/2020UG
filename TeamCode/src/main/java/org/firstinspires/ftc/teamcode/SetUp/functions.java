@@ -6,12 +6,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
-
     //this this where name will be stated
     public DcMotor m_leftBack;
     public DcMotor m_leftFront;
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
+
 
     public void runOpMode() {
             setup();
@@ -37,9 +37,7 @@ public class functions extends LinearOpMode {
 
     }
 
-
-
-    public void movement(double left, double right, int time ){
+    public void movement(double left, double right,int time ){
         m_leftBack.setPower(left);
         m_leftFront.setPower(left);
         m_rightBack.setPower(right);
@@ -51,16 +49,5 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
-      public void Strafing(double power, int time){
-        m_leftBack.setPower(power);
-        m_leftFront.setPower(-power);
-        m_rightBack.setPower(-power);
-        m_rightFront.setPower(power);
-        sleep(time);
-        m_leftBack.setPower(0);
-        m_leftFront.setPower(0);
-        m_rightBack.setPower(0);
-        m_rightFront.setPower(0);
-    }
 
 }
