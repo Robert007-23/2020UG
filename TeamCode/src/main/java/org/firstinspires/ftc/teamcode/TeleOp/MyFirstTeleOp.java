@@ -57,10 +57,6 @@ public class MyFirstTeleOp extends LinearOpMode {
                 final double v3 = r * Math.sin(robotAngle) + rightX;
                 final double v4 = r * Math.cos(robotAngle) - rightX;
 
-                leftfrontDrive.setPower(v1);
-                rightfrontDrive.setPower(v2);
-                leftbackDrive.setPower(v3);
-                rightbackDrive.setPower(v4);
             }
 
             leftbackDrive.setPower(leftPower);
