@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.TeleOp;
+package org.firstinspires.ftc.teamcode.Test;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -15,7 +15,7 @@ public class Intake extends functions { // you need to extend the functions clas
 
         while (opModeIsActive()){
             if (gamepad1.a){ // press the A button to make the intake move
-                Intake(0.5, 500);
+                Intake(1, 500);
             }
 
         }

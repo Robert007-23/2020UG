@@ -34,17 +34,17 @@ import java.util.List;
 public class OpenCVMovementTest extends functions {
     private ElapsedTime runtime = new ElapsedTime();
 
-    //0 means other, 255 means yellow
+    //0 means other, 255 means orange
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
     private static int valMid = -1;
     private static int valLeft = -1;
     private static int valRight = -1;
-    private static int Yellow = -1;
+    private static int orange = -1;
 
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
-
+    
     private static float offsetX = 1.5f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
     private static float offsetY = -3.2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
@@ -84,35 +84,35 @@ public class OpenCVMovementTest extends functions {
             telemetry.addData("Height", rows);
             telemetry.addData("Width", cols);
             telemetry.addData("Time", time);
-            telemetry.addData("Yellow%", Yellow);
+            telemetry.addData("orange%", orange);
             telemetry.update();
-            Yellow = valLeft + valMid + valRight;
+            orange = valLeft + valMid + valRight;
             if (time >= 5 && time <= 6){
-                switch (Yellow){
+                switch (orange){
                     case   0:
                         Strafing(1,1000);
                         movement(1,1,2000);
                         telemetry.clear();
-                        telemetry.addLine("No yellow");
+                        telemetry.addLine("No orange");
                         telemetry.update();
                         break;
                     case 255:
                         movement(1, 1, 1000);
                         telemetry.clear();
-                        telemetry.addLine("A little Yellow");
+                        telemetry.addLine("A little orange");
                         telemetry.update();
                         break;
                     case 510:
                         Strafing(1,1000);
                         movement(1, 1,2000);
                         telemetry.clear();
-                        telemetry.addLine("Some Yellow");
+                        telemetry.addLine("Some orange");
                         telemetry.update();
                         break;
                     case 765:
                         movement(-0.25,-0.25, 2000);
                         telemetry.clear();
-                        telemetry.addLine("All yellow");
+                        telemetry.addLine("All orange");
                         telemetry.update();
                         break;
                     default:
