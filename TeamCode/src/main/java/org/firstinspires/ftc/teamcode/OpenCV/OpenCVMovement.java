@@ -20,6 +20,9 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 /**
  *
  * nerverest ticks
@@ -40,6 +43,18 @@ public class OpenCVMovement extends LinearOpMode {
     private DcMotor leftfrontDrive;
     private DcMotor rightfrontDrive;
 
+    //strafing code
+    public void Strafing(double power, int time){
+        leftbackDrive.setPower(power);
+        leftfrontDrive.setPower(-power);
+        rightbackDrive.setPower(-power);
+        rightfrontDrive.setPower(power);
+        sleep(time);
+        leftbackDrive.setPower(0);
+        leftfrontDrive.setPower(0);
+        rightbackDrive.setPower(0);
+        rightfrontDrive.setPower(0);
+    }
 
     //0 means black, 1 means yellow
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
@@ -115,11 +130,11 @@ public class OpenCVMovement extends LinearOpMode {
             telemetry.update();
             sleep(100);
             if ( time >= 5 && time <= 6 && valLeft == 0 && valMid == 0 && valRight == 0){
-                movement(0.4,0.4,1500);
+                movement(1,-1,1500);
                 Yellow = 1;
             }else if( time >= 5 && time <= 6 && valLeft == 255 && valMid == 255 && valRight == 255){
-                movement(0.4,0.4,1500);
-                movement(-0.4,-0.4,1500);
+                movement(0.2,0.2,1500);
+                movement(-0.2,-0.2,1500);
                 Yellow = 2;
             }
         }
