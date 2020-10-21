@@ -14,9 +14,7 @@ public class Intake extends functions { // you need to extend the functions clas
         waitForStart(); // wait for the start
 
         while (opModeIsActive()){
-            if (gamepad1.a){ // press the A button to make the intake move
-                Intake(1, 500);
-            }
+                Intake();
 
         }
 

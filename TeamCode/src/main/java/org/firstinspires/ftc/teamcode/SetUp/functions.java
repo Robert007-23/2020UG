@@ -3,16 +3,20 @@ package org.firstinspires.ftc.teamcode.SetUp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 /*this is the Class used for setup*/
 public class functions extends LinearOpMode {
     //this this where name will be stated
+    //motors
     public DcMotor m_leftBack;
     public DcMotor m_leftFront;
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
     public DcMotor m_intake;
-
+    //Servos
+    public Servo s_wobblegoal;
 
     public void runOpMode() {
             setup();
@@ -29,7 +33,6 @@ public class functions extends LinearOpMode {
         m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
         m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
-
         m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
 
         //Reversing some of the motor directions to make driving easier
@@ -38,8 +41,13 @@ public class functions extends LinearOpMode {
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
         m_rightFront.setDirection(DcMotor.Direction.FORWARD);
 
+        //Servos
+        s_wobblegoal = hardwareMap.get(Servo.class, "WGS");
+
+
     }
 
+//  movement method (used to move the robot) @Auto
     public void movement(double left, double right,int time ){
         m_leftBack.setPower(left);
         m_leftFront.setPower(left);
@@ -52,12 +60,27 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
-    public void Intake(double power, int time){
-        m_intake.setPower(power);
-        sleep(time);
-        m_intake.setPower(0);
+    //  driving method (used to move the robot) @Tele
+    public void Driving(){
+        double leftPower = Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -1, 1);
+        double rightPower = Range.clip(gamepad1.right_stick_y + gamepad1.right_stick_x,-1 ,1);
+
+        m_leftBack.setPower(-leftPower);
+        m_leftFront.setPower(-leftPower);
+        m_rightBack.setPower(-rightPower);
+        m_rightFront.setPower(-rightPower);
     }
 
+//  Intake method (Used for turning on the intake)
+    public void Intake() {
+        if (gamepad1.a) {
+            m_intake.setPower(1);
+        }else {
+            m_intake.setPower(0);
+        }
+    }
+
+//    Strafing method (used for  strafing)
     public void Strafing(double power, int time){
         m_leftBack.setPower(power);
         m_leftFront.setPower(-power);
@@ -70,4 +93,8 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
+//    wobble goal servo method (Used to move the wobble goal servo)
+    public void WobbleGoal(double pos){
+        s_wobblegoal.setPosition(pos);
+    }
 }
