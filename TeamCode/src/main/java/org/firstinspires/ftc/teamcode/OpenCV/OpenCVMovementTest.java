@@ -46,7 +46,7 @@ public class OpenCVMovementTest extends functions {
     private static float rectWidth = 1.5f/8f;
     
     private static float offsetX = 1.5f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
-    private static float offsetY = -3.2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
+    private static float offsetY = -2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
     private static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
     private static float[] leftPos = {3.74f/8f+offsetX, 4f/8f+offsetY};
@@ -73,7 +73,7 @@ public class OpenCVMovementTest extends functions {
 
         phoneCam.openCameraDevice();//open camera
         phoneCam.setPipeline(new StageSwitchingPipeline());//different stages
-        phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.UPSIDE_DOWN);//display on RC
+        phoneCam.startStreaming(rows, cols, OpenCvCameraRotation.UPRIGHT);//display on RC
         //width, height
         //width = height in this case, because camera is in portrait mode.
 
@@ -90,7 +90,7 @@ public class OpenCVMovementTest extends functions {
             if (time >= 5 && time <= 6){
                 switch (orange){
                     case   0:
-                        Strafing(1,1000);
+                        Strafing(0.5,1000);
                         movement(1,1,2000);
                         telemetry.clear();
                         telemetry.addLine("No orange");
@@ -103,7 +103,7 @@ public class OpenCVMovementTest extends functions {
                         telemetry.update();
                         break;
                     case 510:
-                        Strafing(1,1000);
+                        Strafing(-0.5,500);
                         movement(1, 1,2000);
                         telemetry.clear();
                         telemetry.addLine("Some orange");

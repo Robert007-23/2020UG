@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp (name = "MyFirstTeleOp")//the @ Put the file in TeleOp mode and the "name = " tells the phone what name to belong to this file
-public class MyFirstTeleOp extends LinearOpMode {
+@TeleOp (name = "MyFirstTeleOP")//the @ Put the file in TeleOp mode and the "name = " tells the phone what name to belong to this file
+public class MyFirstTeleOP extends LinearOpMode {
     //speed
     int rawSpeedMultiplier = 1;
     //the motors that have been defined in your code will be stated here
