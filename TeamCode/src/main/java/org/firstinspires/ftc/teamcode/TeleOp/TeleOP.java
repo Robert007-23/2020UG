@@ -19,7 +19,7 @@ public class TeleOP extends functions {
         if (gamepad1.x){
             WobbleGoal(0);
         } else if (gamepad1.y){
-            WobbleGoal(0.5);
+            WobbleGoal(0.2);
         }
 
     }

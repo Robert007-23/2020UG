@@ -74,7 +74,7 @@ public class functions extends LinearOpMode {
 //  Intake method (Used for turning on the intake)
     public void Intake() {
         if (gamepad1.a) {
-            m_intake.setPower(1);
+            m_intake.setPower(-1);
         }else {
             m_intake.setPower(0);
         }
