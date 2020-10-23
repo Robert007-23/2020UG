@@ -97,7 +97,9 @@ public class OpenCVMovementTest extends functions {
                         telemetry.update();
                         break;
                     case 255:
+                        Strafing(0.6,1000);
                         movement(1, 1, 1000);
+                        Intake();
                         telemetry.clear();
                         telemetry.addLine("A little orange");
                         telemetry.update();
