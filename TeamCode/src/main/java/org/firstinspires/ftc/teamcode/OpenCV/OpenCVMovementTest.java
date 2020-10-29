@@ -79,38 +79,41 @@ public class OpenCVMovementTest extends functions {
 
         waitForStart();
         runtime.reset();
-        while (opModeIsActive()) {
-            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
-            telemetry.addData("Height", rows);
-            telemetry.addData("Width", cols);
-            telemetry.addData("Time", time);
-            telemetry.addData("orange%", orange);
-            telemetry.update();
-            orange = valLeft + valMid + valRight;
-            if (time >= 5 && time <= 6){
+
+
+            while (opModeIsActive()) {
+                telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
+                telemetry.addData("Height", rows);
+                telemetry.addData("Width", cols);
+                telemetry.addData("Time", time);
+                telemetry.addData("orange%", orange);
+                telemetry.update();
+                orange = valLeft + valMid + valRight;
+                if (time >= 5 && time <= 6){
                 switch (orange){
                     case   0:
-                        Strafing(0.5,1000);
-                        movement(1,1,2000);
+                        Strafing(-0.5,800);
+                        movement(1,1,1250);
                         telemetry.clear();
                         telemetry.addLine("No orange");
                         telemetry.update();
                         break;
                     case 255:
-                        movement(1, 1, 1000);
+                        movement(1, 1, 1250);
                         telemetry.clear();
                         telemetry.addLine("A little orange");
                         telemetry.update();
                         break;
                     case 510:
                         Strafing(-0.5,500);
-                        movement(1, 1,2000);
+                        movement(1, 1,2250);
                         telemetry.clear();
                         telemetry.addLine("Some orange");
                         telemetry.update();
                         break;
                     case 765:
-                        movement(-0.25,-0.25, 2000);
+                        Strafing(-0.5,500);
+                        movement(1, 1,2250);
                         telemetry.clear();
                         telemetry.addLine("All orange");
                         telemetry.update();
