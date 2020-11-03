@@ -64,7 +64,6 @@ public class functions extends LinearOpMode {
         m_rightBack.setPower(0);
         m_rightFront.setPower(0);
     }
-
     //  driving method (used to move the robot) @Tele
     public void Driving(){
         double leftPower = Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -1, 1);
@@ -75,22 +74,33 @@ public class functions extends LinearOpMode {
         m_rightBack.setPower(-rightPower);
         m_rightFront.setPower(-rightPower);
     }
-
 //  Intake method (Used for turning on the intake)
     public void Intake() {
         if (gamepad1.a) {
-            m_intake.setPower(1);
+            m_intake.setPower(-1);
         }else {
             m_intake.setPower(0);
         }
     }
 
 //    Strafing method (used for  strafing)
-    public void Strafing(double power, int time){
+    public void Strafing(double power, int time) {
         m_leftBack.setPower(power);
         m_leftFront.setPower(-power);
         m_rightBack.setPower(-power);
-        m_rightFront.setPower(power);
+        m_rightFront.setPower(-power);
+        sleep(999);
+        m_leftBack.setPower(0);
+        m_leftFront.setPower(0);
+        m_rightBack.setPower(0);
+        m_rightFront.setPower(0);
+    }
+    public void StrafingTeleOpL(double power, int time) {
+        power = Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -1, 1);
+        m_leftBack.setPower(power);
+        m_leftFront.setPower(-power);
+        m_rightBack.setPower(-power);
+        m_rightFront.setPower(-power);
         sleep(time);
         m_leftBack.setPower(0);
         m_leftFront.setPower(0);
