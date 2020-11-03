@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.SetUp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -17,6 +18,7 @@ public class functions extends LinearOpMode {
     public DcMotor m_intake;
     //Servos
     public Servo s_wobblegoal;
+    public CRServo s_actuator;
 
     public void runOpMode() {
             setup();
@@ -43,6 +45,9 @@ public class functions extends LinearOpMode {
 
         //Servos
         s_wobblegoal = hardwareMap.get(Servo.class, "WGS");
+
+        //CRServo
+        s_actuator = hardwareMap.get(CRServo.class, "AS");
 
 
     }
@@ -97,4 +102,8 @@ public class functions extends LinearOpMode {
     public void WobbleGoal(double pos){
         s_wobblegoal.setPosition(pos);
     }
+
+//    wobble goal Actuator method (Used to move the Actuator)
+    public void Actuator (double speed){ s_actuator.setPower(speed);}
+
 }

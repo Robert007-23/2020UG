@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.OpenCV;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.teamcode.SetUp.functions;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -30,21 +29,19 @@ import java.util.List;
  * monitor: 640 x 480
  *YES
  */
-@Autonomous(name= "OpenCVMovementTest")
-public class OpenCVMovementTest extends functions {
+@Autonomous(name= "projections")
+public class projections extends LinearOpMode {
+    private ElapsedTime runtime = new ElapsedTime();
 
-
-    //0 means other, 255 means orange
+    //0 means black, 1 means yellow
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
     private static int valMid = -1;
     private static int valLeft = -1;
     private static int valRight = -1;
-    private static int orange = -1;
-
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
-    
+
     private static float offsetX = 1.5f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
     private static float offsetY = -2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
@@ -57,15 +54,10 @@ public class OpenCVMovementTest extends functions {
     private final int cols = 480;
 
     OpenCvCamera phoneCam;
-    private ElapsedTime runtime = new ElapsedTime();
-
-
-
-
 
     @Override
-    public void runOpMode()  {
-        setup();
+    public void runOpMode() throws InterruptedException {
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
         //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
@@ -80,56 +72,13 @@ public class OpenCVMovementTest extends functions {
 
         waitForStart();
         runtime.reset();
-        time = 0;
+        while (opModeIsActive()) {
+            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
+            telemetry.addData("Height", rows);
+            telemetry.addData("Width", cols);
 
-
-
-
-            while (opModeIsActive()) {
-                telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
-                telemetry.addData("Height", rows);
-                telemetry.addData("Width", cols);
-                telemetry.addData("Time", time);
-                telemetry.addData("orange%", orange);
-                telemetry.update();
-                orange = valLeft + valMid + valRight;
-                if (time >= 5 && time <= 6){
-                switch (orange){
-                    case   0:
-                        Strafing(-0.5,500);
-                        movement(1,1,1250);
-                        telemetry.clear();
-                        telemetry.addLine("No orange");
-                        telemetry.update();
-                        break;
-                    case 255:
-                        movement(1, 1, 1500);
-                        telemetry.clear();
-                        telemetry.addLine("A little orange");
-                        telemetry.update();
-                        break;
-                    case 510:
-                        Strafing(-0.5,500);
-                        movement(1, 1,2250);
-                        telemetry.clear();
-                        telemetry.addLine("Some orange");
-                        telemetry.update();
-                        break;
-                    case 765:
-                        Strafing(-0.5,500);
-                        movement(1, 1,2250);
-                        telemetry.clear();
-                        telemetry.addLine("All orange");
-                        telemetry.update();
-                        break;
-                    default:
-                        telemetry.clear();
-                        telemetry.addLine("Error_Code= -1");
-                        telemetry.update();
-                        break;
-                }
-                sleep(100);
-            }
+            telemetry.update();
+            sleep(100);
         }
     }
 
@@ -192,7 +141,7 @@ public class OpenCVMovementTest extends functions {
             //outline/contour
             Imgproc.findContours(thresholdMat, contoursList, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
             yCbCrChan2Mat.copyTo(all);//copies mat object
-            //Imgproc.drawContours(all, contoursList, -1, new Scalar(255, 0, 0), 3, 8);//draws blue contours
+            Imgproc.drawContours(all, contoursList, -1, new Scalar(255, 0, 0), 3, 8);//draws blue contours
 
 
             //get values from frame
@@ -213,7 +162,7 @@ public class OpenCVMovementTest extends functions {
             //draw circles on those points
             Imgproc.circle(all, pointMid,5, new Scalar( 255, 0, 0 ),1 );//draws circle
             Imgproc.circle(all, pointLeft,5, new Scalar( 255, 0, 0 ),1 );//draws circle
-            Imgproc.circle(all, pointRight,5, new Scalar( 255, 0, 0 ),1 );//draws circle
+            Imgproc.circle(all, pointRight,5, new Scalar( 255, 0, 0 ),1 );//draws circle=
 
             //draw 3 rectangles
             Imgproc.rectangle(//1-3
