@@ -10,19 +10,36 @@ public class TeleOP extends functions {
 
 
     @Override
-    public void runOpMode() {
-        setup();
-        waitForStart();
-        while (opModeIsActive()) {
-            Driving();
-            Intake();
-            Strafing(1,1);
-            if (gamepad1.x) {
-                WobbleGoal(0);
-            } else if (gamepad1.y) {
-                WobbleGoal(0.2);
-            }
-        }
+    public void runOpMode(){
+    setup();
+    waitForStart();
+    while(opModeIsActive()){
+        Driving();
+        Intake();
+        WG();
+        AM();
 
     }
+    }
+
+
+    public void WG(){
+        if (gamepad1.x){
+            WobbleGoal(0);
+        } else if (gamepad1.y){
+            WobbleGoal(0.5);
+        }
+    }
+
+    public void AM(){
+        if (gamepad1.left_bumper) {
+            Actuator(1);
+        } else if (gamepad1.right_bumper){
+            Actuator(-1);
+        } else {
+            Actuator(0);
+        }
+    }
+
+
 }
