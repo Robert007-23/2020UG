@@ -11,13 +11,10 @@ public class FileTest extends SetUp {
 
 
         public void runOpMode() {
-     //   try {
+
             setup();
             waitForStart();
             movement(1,1,1);
-      //  }catch (Exception e){
-
-      //  }
 
 
     }
