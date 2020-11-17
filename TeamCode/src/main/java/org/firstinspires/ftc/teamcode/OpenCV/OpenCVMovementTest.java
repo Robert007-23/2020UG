@@ -44,7 +44,7 @@ public class OpenCVMovementTest extends functions {
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
-    
+
     private static float offsetX = 1.5f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
     private static float offsetY = -2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
@@ -58,6 +58,8 @@ public class OpenCVMovementTest extends functions {
 
     OpenCvCamera phoneCam;
     private ElapsedTime runtime = new ElapsedTime();
+    double staticTime;
+    double realTime;
 
 
 
@@ -80,44 +82,49 @@ public class OpenCVMovementTest extends functions {
 
         waitForStart();
         runtime.reset();
-        time = 0;
-
-
+        time = staticTime;
 
 
             while (opModeIsActive()) {
                 telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
                 telemetry.addData("Height", rows);
                 telemetry.addData("Width", cols);
-                telemetry.addData("Time", time);
+                telemetry.addData("Time", realTime);
                 telemetry.addData("orange%", orange);
                 telemetry.update();
                 orange = valLeft + valMid + valRight;
-                if (time >= 5 && time <= 6){
+                realTime = time - staticTime;
+                if (realTime >= 5 && realTime <= 6){
                 switch (orange){
                     case   0:
                         Strafing(-0.5,500);
-                        movement(1,1,1250);
+                        movement(1,1,1500);
+                        movement(-0.5,-0.5, 300);
                         telemetry.clear();
                         telemetry.addLine("No orange");
                         telemetry.update();
                         break;
                     case 255:
-                        movement(1, 1, 1500);
+                        movement(1, 1, 2000);
+                        Strafing(0.50, 1000);
+                        movement(-0.5, -0.5, 1250);
+
                         telemetry.clear();
                         telemetry.addLine("A little orange");
                         telemetry.update();
                         break;
                     case 510:
                         Strafing(-0.5,500);
-                        movement(1, 1,2250);
+                        movement(1, 0.95,2500);
+                        movement(-1,-0.95,800);
                         telemetry.clear();
                         telemetry.addLine("Some orange");
                         telemetry.update();
                         break;
                     case 765:
                         Strafing(-0.5,500);
-                        movement(1, 1,2250);
+                        movement(1, 0.95,2500);
+                        movement(-1,-0.95,800);
                         telemetry.clear();
                         telemetry.addLine("All orange");
                         telemetry.update();

@@ -18,7 +18,7 @@ public class TeleOP extends functions {
         Intake();
         WG();
         AM();
-
+        ST();
     }
     }
 
@@ -41,5 +41,14 @@ public class TeleOP extends functions {
         }
     }
 
+    public void ST(){
+     if (gamepad1.dpad_left){
+         Strafing(1,1);
+     }  else if(gamepad1.dpad_right){
+         Strafing(-1,1);
+     }
+
+
+    }
 
 }
