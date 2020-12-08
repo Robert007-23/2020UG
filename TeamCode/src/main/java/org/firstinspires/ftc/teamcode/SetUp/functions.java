@@ -16,9 +16,13 @@ public class functions extends LinearOpMode {
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
     public DcMotor m_intake;
+
+    public DcMotor m_test1;
+    public DcMotor m_test2;
     //Servos
     public Servo s_wobblegoal;
     public CRServo s_actuator;
+    public Servo s_launcher;
 
     public void runOpMode() {
             setup();
@@ -35,6 +39,8 @@ public class functions extends LinearOpMode {
         m_leftFront = hardwareMap.get(DcMotor.class, "FLM");
         m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
+        m_test1 = hardwareMap.get(DcMotor.class, "test1");
+        m_test2 = hardwareMap.get(DcMotor.class, "test2");
         m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
 
         //Reversing some of the motor directions to make driving easier
@@ -42,9 +48,11 @@ public class functions extends LinearOpMode {
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
         m_rightFront.setDirection(DcMotor.Direction.FORWARD);
+        m_test1.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Servos
         s_wobblegoal = hardwareMap.get(Servo.class, "WGS");
+        s_launcher   = hardwareMap.get(Servo.class, "RL");
 
         //CRServo
         s_actuator = hardwareMap.get(CRServo.class, "AS");
@@ -79,7 +87,7 @@ public class functions extends LinearOpMode {
 //  Intake method (Used for turning on the intake)
     public void Intake() {
         if (gamepad1.a) {
-            m_intake.setPower(1);
+            m_intake.setPower(0.8);
         }else {
             m_intake.setPower(0);
         }
@@ -98,6 +106,8 @@ public class functions extends LinearOpMode {
         m_rightFront.setPower(0);
     }
 
+//
+
 //    wobble goal servo method (Used to move the wobble goal servo)
     public void WobbleGoal(double pos){
         s_wobblegoal.setPosition(pos);
@@ -105,5 +115,31 @@ public class functions extends LinearOpMode {
 
 //    wobble goal Actuator method (Used to move the Actuator)
     public void Actuator (double speed){ s_actuator.setPower(speed);}
+
+    public void RingLauncher (double pos){ s_launcher.setPosition(pos);}
+
+//    MOTOR Test method(used to test motors)
+    public void MotorTest(){
+                if (gamepad2.a) {
+                    m_test1.setPower(-0.25);
+                    m_test2.setPower(-0.25);
+                }
+                if (gamepad2.b) {
+                    m_test1.setPower(-0.50);
+                    m_test2.setPower(-0.50);
+                }
+                 if (gamepad2.x){
+                  m_test1.setPower(-0.75);
+                  m_test2.setPower(-0.75);
+                 }
+                if (gamepad2.y){
+                 m_test1.setPower(-1);
+                 m_test2.setPower(-1);
+                } else {
+                 m_test1.setPower(0);
+                 m_test2.setPower(0);
+                }
+    }
+
 
 }
