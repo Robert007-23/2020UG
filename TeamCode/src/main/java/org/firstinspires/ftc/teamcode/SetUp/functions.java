@@ -23,6 +23,7 @@ public class functions extends LinearOpMode {
     public Servo s_wobblegoal;
     public CRServo s_actuator;
     public Servo s_launcher;
+    
 
     public void runOpMode() {
             setup();

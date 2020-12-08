@@ -57,7 +57,7 @@ public class TeleOP extends functions {
 
     public void RL(){
      if (gamepad1.start && shoot){
-         RingLauncher(0.7);
+         RingLauncher(-0.7);
          sleep(1000);
          shoot = false;
      } else if(gamepad1.start && !shoot){

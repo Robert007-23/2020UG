@@ -105,8 +105,9 @@ public class OpenCVMovementTest extends functions {
                         telemetry.update();
                         break;
                     case 255:
-                        movement(1, 1, 2000);
-                        Strafing(0.50, 1000);
+                        movement(0.5, 0.5, 2500);
+                        Strafing(0.50, 750);
+                        movement(1,1,500);
                         movement(-0.5, -0.5, 1250);
 
                         telemetry.clear();
