@@ -33,11 +33,11 @@ public class TeleOP extends functions {
 
     public void AM(){
         if (gamepad1.left_bumper) {
-            Actuator(1);
+            Actuator(-0.99);
         } else if (gamepad1.right_bumper){
-            Actuator(-0.40);
+            Actuator(0.40);
         } else {
-            Actuator(-0.20);
+            Actuator(0.20);
         }
     }
 
