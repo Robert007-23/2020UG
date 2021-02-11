@@ -36,8 +36,9 @@ public class TeleOP extends functions {
             Actuator(-0.99);
         } else if (gamepad1.right_bumper){
             Actuator(0.40);
+        Actuator(-0.99);
         } else {
-            Actuator(0.20);
+            Actuator(0.40);
         }
     }
 
