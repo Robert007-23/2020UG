@@ -32,31 +32,32 @@ import java.util.List;
  */
 @Autonomous(name= "OpenCVMovementTest")
 public class OpenCVMovementTest extends functions {
-    private ElapsedTime runtime = new ElapsedTime();
 
-    //0 means other, 255 means yellow
+
+    //0 means other, 255 means orange
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
     private static int valMid = -1;
     private static int valLeft = -1;
     private static int valRight = -1;
-    private static int Yellow = -1;
+    private static int orange = -1;
 
 
     private static float rectHeight = .6f/8f;
     private static float rectWidth = 1.5f/8f;
-
+    
     private static float offsetX = 1.5f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
-    private static float offsetY = 0f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
+    private static float offsetY = -2f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
 
     private static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
-    private static float[] leftPos = {3.5f/8f+offsetX, 4f/8f+offsetY};
-    private static float[] rightPos = {4.5f/8f+offsetX, 4f/8f+offsetY};
+    private static float[] leftPos = {3.74f/8f+offsetX, 4f/8f+offsetY};
+    private static float[] rightPos = {4.25f/8f+offsetX, 4f/8f+offsetY};
     //moves all rectangles right or left by amount. units are in ratio to monitor
 
     private final int rows = 640;
     private final int cols = 480;
 
     OpenCvCamera phoneCam;
+    private ElapsedTime runtime = new ElapsedTime();
 
 
 
@@ -79,47 +80,55 @@ public class OpenCVMovementTest extends functions {
 
         waitForStart();
         runtime.reset();
-        while (opModeIsActive()) {
-            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
-            telemetry.addData("Height", rows);
-            telemetry.addData("Width", cols);
-            telemetry.addData("Time", time);
-            telemetry.addData("Yellow%", Yellow);
-            telemetry.update();
-            Yellow = valLeft + valMid + valRight;
-            if (time >= 5 && time <= 6){
-                switch (Yellow){
+        time = 0;
+
+
+
+
+            while (opModeIsActive()) {
+                telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
+                telemetry.addData("Height", rows);
+                telemetry.addData("Width", cols);
+                telemetry.addData("Time", time);
+                telemetry.addData("orange%", orange);
+                telemetry.update();
+                orange = valLeft + valMid + valRight;
+                if (time >= 5 && time <= 6){
+                switch (orange){
                     case   0:
-                        movement(1,1,2000);
+                        Strafing(-0.5,500);
+                        movement(1,1,1250);
                         telemetry.clear();
-                        telemetry.addLine("No Orange 'o' ");
+                        telemetry.addLine("No orange");
                         telemetry.update();
                         break;
                     case 255:
-                        movement(0.25, -0.25, 2000);
+                        movement(1, 1, 1500);
                         telemetry.clear();
-                        telemetry.addLine("A little Orange (Ring) -_-");
+                        telemetry.addLine("A little orange");
                         telemetry.update();
                         break;
                     case 510:
-                        movement(-0.25, 0.25,2000);
+                        Strafing(-0.5,500);
+                        movement(1, 1,2250);
                         telemetry.clear();
-                        telemetry.addLine("Some Orange (Ring) 0-0");
+                        telemetry.addLine("Some orange");
                         telemetry.update();
                         break;
                     case 765:
-                        movement(-0.25,-0.25, 2000);
+                        Strafing(-0.5,500);
+                        movement(1, 1,2250);
                         telemetry.clear();
-                        telemetry.addLine("All Orange (Ring) :)");
+                        telemetry.addLine("All orange");
                         telemetry.update();
                         break;
                     default:
                         telemetry.clear();
-                        telemetry.addLine("Error_Code= -1,Please Retry :P or check variables again");
+                        telemetry.addLine("Error_Code= -1");
                         telemetry.update();
                         break;
                 }
-                sleep(10000);
+                sleep(100);
             }
         }
     }
