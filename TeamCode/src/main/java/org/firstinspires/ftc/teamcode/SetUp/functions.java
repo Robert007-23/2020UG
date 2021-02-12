@@ -23,12 +23,12 @@ public class functions extends LinearOpMode {
     public void runOpMode() {
             setup();
     }
-    /**this is were all functions will go to be used later**/
+    /**this is where all functions will go to be used later**/
     // this makes a functions so that you can use it over and over
 
     public void setup(){
 
-        /*********DEFINING HARDWARE***************************************/
+        /********DEFINING HARDWARE***************************************/
 
         //Motors
         m_leftBack = hardwareMap.get(DcMotor.class, "BLM");
@@ -95,18 +95,6 @@ public class functions extends LinearOpMode {
         m_rightBack.setPower(0);
         m_rightFront.setPower(0);
     }
-    public void StrafingTeleOpL(double power, int time) {
-        power = Range.clip(gamepad1.left_stick_y - gamepad1.left_stick_x, -1, 1);
-        m_leftBack.setPower(power);
-        m_leftFront.setPower(-power);
-        m_rightBack.setPower(-power);
-        m_rightFront.setPower(-power);
-        sleep(time);
-        m_leftBack.setPower(0);
-        m_leftFront.setPower(0);
-        m_rightBack.setPower(0);
-        m_rightFront.setPower(0);
-    }
 
 //    wobble goal servo method (Used to move the wobble goal servo)
     public void WobbleGoal(double pos){
@@ -115,5 +103,8 @@ public class functions extends LinearOpMode {
 
 //    wobble goal Actuator method (Used to move the Actuator)
     public void Actuator (double speed){ s_actuator.setPower(speed);}
-
+//    Auto-intake for advanced shooting function
+    public void AIntake() {
+            m_intake.setPower(-1);
+    }
 }

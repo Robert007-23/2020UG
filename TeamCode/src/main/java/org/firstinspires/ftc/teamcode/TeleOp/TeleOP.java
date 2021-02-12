@@ -18,6 +18,7 @@ public class TeleOP extends functions {
         Intake();
         WG();
         AM();
+        AS(); // Experimental, activated by pressing up-dpad and deactivated by pressing b.
 
     }
     }
@@ -40,6 +41,17 @@ public class TeleOP extends functions {
         sleep(1500);
         } else {
             Actuator(0.40);
+        }
+    }
+    public void AS(){
+        if (gamepad1.dpad_up) {
+            AIntake();
+            Actuator(-0.99);
+            sleep(1000);
+            Actuator (0.40);
+        } else if (gamepad1.b){
+            Intake();
+            AM();
         }
     }
 
