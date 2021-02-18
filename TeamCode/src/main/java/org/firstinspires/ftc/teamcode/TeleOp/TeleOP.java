@@ -18,7 +18,7 @@ public class TeleOP extends functions {
         Intake();
         WG();
         AM();
-        AS(); // Experimental, activated by pressing up-dpad and deactivated by pressing b.
+        AS(); // Experimental, activated by pressing A once, will now be automated to shoow 3 rings
 
     }
     }
@@ -35,10 +35,16 @@ public class TeleOP extends functions {
     public void AM(){
         if (gamepad1.left_bumper) {
             Actuator(-0.99);
-        } else if (gamepad1.right_bumper){
+        } else if (gamepad1.right_bumper) {
             Actuator(0.40);
-        Actuator(-0.99);
-        sleep(1500);
+            Actuator(-0.99);
+            sleep(1);
+            Actuator(0.40);
+            Actuator(-0.99);
+            sleep(1);
+            Actuator(0.40);
+            Actuator(-0.99);
+            sleep(1700);
         } else {
             Actuator(0.40);
         }

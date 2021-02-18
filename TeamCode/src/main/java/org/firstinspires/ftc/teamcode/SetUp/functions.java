@@ -39,7 +39,7 @@ public class functions extends LinearOpMode {
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
         m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
 
-        //Reversing some of the motor directions to make driving easier
+       //Reversing some of the motor directions to make driving easier
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
