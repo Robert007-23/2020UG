@@ -24,7 +24,6 @@ public class SetUp extends LinearOpMode {
 //        m_leftFront.setDirection(DcMotor.Direction.REVERSE);
 //        m_leftBack.setDirection(DcMotor.Direction.REVERSE);
 
-
     }
     /**this is were all functions will go to be used later**/
     // this makes a functions so that you can use it over and over

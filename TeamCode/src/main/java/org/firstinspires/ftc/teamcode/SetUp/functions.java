@@ -16,6 +16,7 @@ public class functions extends LinearOpMode {
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
     public DcMotor m_intake;
+    public DcMotor m_wobble;
     //Servos
     public Servo s_wobblegoal;
     public CRServo s_actuator;
@@ -38,12 +39,14 @@ public class functions extends LinearOpMode {
         m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
         m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
+        m_wobble = hardwareMap.get(DcMotor.class, "WOBBLE_GOAL");
 
        //Reversing some of the motor directions to make driving easier
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
         m_rightFront.setDirection(DcMotor.Direction.FORWARD);
+        m_wobble.setDirection(DcMotor.Direction.REVERSE);
 
         //Servos
         s_wobblegoal = hardwareMap.get(Servo.class, "WGS");
@@ -114,5 +117,15 @@ public class functions extends LinearOpMode {
     public void AIntake() {
         m_intake.setPower(-1);
     }
-}
 
+    // WobbleGoal Motor
+    public void WobbleGoalM(double power){
+        if (gamepad1.b){
+            m_wobble.setPower(power);
+            sleep(999);
+        }
+        if (gamepad1.y){
+            m_wobble.setPower(-power);
+            sleep(999);
+        }
+    }}
