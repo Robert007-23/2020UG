@@ -46,7 +46,6 @@ public class functions extends LinearOpMode {
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
         m_rightFront.setDirection(DcMotor.Direction.FORWARD);
-        m_wobble.setDirection(DcMotor.Direction.REVERSE);
 
         //Servos
         s_wobblegoal = hardwareMap.get(Servo.class, "WGS");
