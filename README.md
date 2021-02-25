@@ -1,23 +1,23 @@
-## NOTICE
+// NOTICE
 
 This repository contains the public FTC SDK for the SKYSTONE (2019-2020) competition season.
 
 Formerly this software project was hosted [here](https://github.com/ftctechnh/ftc_app).  Teams who are competing in the SKYSTONE Challenge should use this [new SKYSTONE repository](https://github.com/FIRST-Tech-Challenge/SKYSTONE) instead of the older (and no longer updated) ftc_app repository.
 
-## Welcome!
+// Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
 
-## Getting Started
+// Getting Started
 If you are new to robotics or new to the *FIRST* Tech Challenge, then you should consider reviewing the [FTC Blocks Tutorial](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki/Blocks-Tutorial) to get familiar with how to use the control system:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FTC Blocks Online Tutorial](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki/Blocks-Tutorial)
 
 Even if you are an advanced Java programmer, it is helpful to start with the [FTC Blocks tutorial](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki/Blocks-Tutorial), and then migrate to the [OnBot Java Tool](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki/OnBot-Java-Tutorial) or to [Android Studio](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki/Android-Studio-Tutorial) afterwards.
 
-## Downloading the Project
+// Downloading the Project
 If you are an Android Studio programmer, there are several ways to download this repo.  Note that if you use the Blocks or OnBot Java Tool to program your robot, then you do not need to download this repository.
 
-* If you are a git user, you can clone the most current version of the repository:
+// If you are a git user, you can clone the most current version of the repository:
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone https://github.com/FIRST-Tech-Challenge/SKYSTONE.git</p>
 
@@ -27,15 +27,15 @@ If you are an Android Studio programmer, there are several ways to download this
 
 Once you have downloaded and uncompressed (if needed) your folder, you can use Android Studio to import the folder  ("Import project (Eclipse ADT, Gradle, etc.)").
 
-## Getting Help
-### User Documentation and Tutorials
+// Getting Help
+//# User Documentation and Tutorials
 *FIRST* maintains online documentation with information and tutorials on how to use the *FIRST* Tech Challenge software and robot control system.  You can access this documentation using the following link:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SKYSTONE Online Documentation](https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki)
 
 Note that the online documentation is an "evergreen" document that is constantly being updated and edited.  It contains the most current information about the *FIRST* Tech Challenge software and control system.
 
-### Javadoc Reference Material
+//# Javadoc Reference Material
 The Javadoc reference documentation for the FTC SDK is now available online.  Click on the following link to view the FTC SDK Javadoc documentation as a live website:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FTC Javadoc Documentation](https://first-tech-challenge.github.io/SkyStone/doc/javadoc/index.html)
@@ -45,17 +45,17 @@ Documentation for the FTC SDK is also included with this repository.  There is a
  * The folder "apk" contains the .apk files for the FTC Driver Station and FTC Robot Controller apps.
  * The folder "javadoc" contains the JavaDoc user documentation for the FTC SDK.
 
-### Online User Forum
+//# Online User Forum
 For technical questions regarding the Control System or the FTC SDK, please visit the FTC Technology forum:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[FTC Technology Forum](https://ftcforum.usfirst.org/forumdisplay.php?156-FTC-Technology)
 
 # Release Information
-## Version 5.5 (20200824-090813)
+// Version 5.5 (20200824-090813)
 
 Version 5.5 requires Android Studio 4.0 or later.
 
-### New features
+//# New features
 * Adds support for calling custom Java classes from Blocks OpModes (fixes [SkyStone issue #161](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/161)).
     * Classes must be in the org.firstinspires.ftc.teamcode package.
     * Methods must be public static and have no more than 21 parameters.
@@ -100,10 +100,10 @@ Version 5.5 requires Android Studio 4.0 or later.
     * New feature (Control Hub only): wireless network connection strength indicator (0-5 bars)
     * New feature (Control Hub only): tapping on the ping/channel display will switch to an alternate display showing radio RX dBm and link speed (tap again to switch back)
     * The layout will NOT autorotate. You can switch the layout from the Driver Station's settings menu.
-### Breaking changes
+//# Breaking changes
 * Removes support for Android versions 4.4 through 5.1 (KitKat and Lollipop). The minSdkVersion is now 23.
 * Removes the deprecated `LinearOpMode` methods `waitOneFullHardwareCycle()` and `waitForNextHardwareCycle()`
-### Enhancements
+//# Enhancements
 * Handles RS485 address of Control Hub automatically
     * The Control Hub is automatically given a reserved address
     * Existing configuration files will continue to work
@@ -161,7 +161,7 @@ Version 5.5 requires Android Studio 4.0 or later.
 * Add sample illustrating manual webcam use: ConceptWebcam
 
 
-### Bug fixes
+//# Bug fixes
 * Fixes [SkyStone issue #248](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/248)
 * Fixes [SkyStone issue #232](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/232) and
   modifies bulk caching semantics to allow for cache-preserving MANUAL/AUTO transitions.
@@ -194,7 +194,7 @@ Version 5.5 requires Android Studio 4.0 or later.
 * Fixes possible arithmetic overflow in Deadline
 * Fixes deadlock in Vuforia webcam support which could cause 5-second delays when stopping OpMode
 
-## Version 5.4 (20200108-101156)
+// Version 5.4 (20200108-101156)
 * Fixes [SkyStone issue #88](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/88)
 * Adds an inspection item that notes when a robot controller (Control Hub) is using the factory default password.
 * Fixes [SkyStone issue #61](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/61)
@@ -230,7 +230,7 @@ Version 5.5 requires Android Studio 4.0 or later.
   * The new motor types will still be available but their Default control behavior will revert back to Rev 5.2
 * Adds new `ConceptMotorBulkRead` sample Opmode to demonstrate and compare Motor Bulk-Read modes for reducing I/O latencies.
 
-## Version 5.3 (20191004-112306)
+// Version 5.3 (20191004-112306)
 * Fixes external USB/UVC webcam support
 * Makes various bugfixes and improvements to Blocks page, including but not limited to:
     * Many visual tweaks
@@ -257,7 +257,7 @@ Version 5.5 requires Android Studio 4.0 or later.
 * Fixes [ftc_app issue #542](https://github.com/ftctechnh/ftc_app/issues/542)
 * Allows "A" and lowercase letters when naming device through RC and DS apps.
 
-## Version 5.2 (20190905-083277)
+// Version 5.2 (20190905-083277)
 * Fixes extra-wide margins on settings activities, and placement of the new configuration button
 * Adds Skystone Vuforia image target data.
    * Includes sample Skystone Vuforia Navigation op modes (Java).
@@ -273,7 +273,7 @@ Version 5.5 requires Android Studio 4.0 or later.
    * Shows generated java code for blocks, even when hardware items are missing from the active configuration.
    * Displays warning icon when outdated Vuforia and TensorFlow blocks are used ([SkyStone issue #27](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/27))
 
-## Version 5.1 (20190820-222104)
+// Version 5.1 (20190820-222104)
 * Defines default PIDF parameters for the following motors:
     * REV Core Hex Motor
     * REV 20:1 HD Hex Motor
@@ -304,7 +304,7 @@ Known issues:
     * It's possible for a build to be queued, but not started. The OnBot Java build console will display a warning if this occurs.
     * A user might not realize they are editing a different file if the user inadvertently switches from one file to another since this switch is now seamless. The name of the currently open file is displayed in the browser tab.
 
-## Version 5.0 (built on 19.06.14)
+// Version 5.0 (built on 19.06.14)
  * Support for the REV Robotics Control Hub.
  * Adds a Java preview pane to the Blocks editor.
  * Adds a new offline export feature to the Blocks editor.
@@ -317,13 +317,13 @@ Known issues:
  * Fixes ftctechnh/ftc_app issues 621, 713.
  * Miscellaneous bug fixes and improvements.
 
-## Version 4.3 (built on 18.10.31)
+// Version 4.3 (built on 18.10.31)
  * Includes missing TensorFlow-related libraries and files.
 
-## Version 4.2 (built on 18.10.30)
+// Version 4.2 (built on 18.10.30)
  * Includes fix to avoid deadlock situation with WatchdogMonitor which could result in USB communication errors.
      - Comm error appeared to require that user disconnect USB cable and restart the Robot Controller app to recover.
-     - robotControllerLog.txt would have error messages that included the words "E RobotCore: lynx xmit lock: #### abandoning lock:"
+     - robotControllerLog.txt would have error messages that included the words "E RobotCore: lynx xmit lock: // abandoning lock:"
  * Includes fix to correctly list the parent module address for a REV Robotics Expansion Hub in a configuration (.xml) file.
      - Bug in versions 4.0 and 4.1 would incorrect list the address module for a parent REV Robotics device as "1".
      - If the parent module had a higher address value than the daisy-chained module, then this bug would prevent the Robot Controller from communicating with the downstream Expansion Hub.
@@ -343,7 +343,7 @@ Known issues:
      - TensorFlow lite can recognize Gold Mineral and Silver Mineral from 2018-2019 game.
      - Example Java and Block op modes are included to show how to determine the relative position of the gold block (left, center, right).
 
-## Version 4.1 (released on 18.09.24)
+// Version 4.1 (released on 18.09.24)
 
 Changes include:
  * Fix to prevent crash when deprecated configuration annotations are used.
@@ -353,7 +353,7 @@ Changes include:
  * Updated Blocks sample op mode list to include Rover Ruckus Vuforia example.
  * Update SDK library version number.
 
-## Version 4.0 (released on 18.09.12)
+// Version 4.0 (released on 18.09.12)
 
 Changes include:
  * Initial support for UVC compatible cameras
@@ -457,7 +457,7 @@ Known issues:
     - The blink indication feature that shows which Expansion Hub is currently being configured does not work for a newly created configuration file.
         + User has to first save a newly created configuration file and then close and re-edit the file in order for blink indicator to work.
 
-## Version 3.6 (built on 17.12.18)
+// Version 3.6 (built on 17.12.18)
 
 Changes include:
  * Blocks Changes
@@ -469,7 +469,7 @@ Changes include:
  * Modified VuforiaLocalizerImpl to allow for user rendering of frames
      - Added a user-overrideable onRenderFrame() method which gets called by the class's renderFrame() method.
 
-## Version 3.5 (built on 17.10.30)
+// Version 3.5 (built on 17.10.30)
 
 Changes with version 3.5 include:
  * Introduced a fix to prevent random op mode stops, which can occur after the Robot Controller app has been paused and then resumed (for example, when a user temporarily turns off the display of the Robot Controller phone, and then turns the screen back on).
@@ -483,7 +483,7 @@ Changes with version 3.5 include:
  * Removed unneeded resources from android.jar binaries used by OnBot Java to reduce final size of Robot Controller app.
  * Added MR_ANALOG_TOUCH_SENSOR block to Blocks Programming Tool.
 
-## Version 3.4 (built on 17.09.06)
+// Version 3.4 (built on 17.09.06)
 
 Changes with version 3.4 include:
  * Added telemetry.update() statement for BlankLinearOpMode template.
@@ -491,7 +491,7 @@ Changes with version 3.4 include:
  * Added some additional sample Block op modes.
  * Reworded OnBot Java readme slightly.
 
-## Version 3.3 (built on 17.09.04)
+// Version 3.3 (built on 17.09.04)
 
 This version of the software includes improves for the FTC Blocks Programming Tool and the OnBot Java Programming Tool.
 
@@ -523,7 +523,7 @@ Known issues:
  * OnBot Java
     - Sometimes when you push the build button to build all op modes, the RC returns an error message that the build failed.  If you press the build button a second time, the build typically suceeds.
 
-## Version 3.2 (built on 17.08.02)
+// Version 3.2 (built on 17.08.02)
 
 This version of the software introduces the "OnBot Java" Development Tool.  Similar to the FTC Blocks Development Tool, the FTC OnBot Java Development Tool allows a user to create, edit and build op modes dynamically using only a Javascript-enabled web browser.
 
@@ -559,7 +559,7 @@ Known issues:
      - Can't handle casted objects
      - Any objects coming from an parenthetically enclosed expression
 
-## Version 3.10 (built on 17.05.09)
+// Version 3.10 (built on 17.05.09)
 
 This version of the software provides support for the REV Robotics Expansion Hub.  This version also includes improvements in the USB communication layer in an effort to enhance system resiliency.  If you were using a 2.x version of the software previously, updating to version 3.1 requires that you also update your Driver Station software in addition to updating the Robot Controller software.
 
@@ -585,7 +585,7 @@ In addition to the release changes listed below (see section labeled "Version 3.
 
 **************************************************************************************
 
-## Version 3.00 (built on 17.04.13)
+// Version 3.00 (built on 17.04.13)
 
 *** Use this version of the software at YOUR OWN RISK!!! ***
 
@@ -620,22 +620,22 @@ Changes include:
     - Implements FTC Blocks programming support for REV Expansion Hub and sensor hardware.
     - Detects and alerts when I2C device disconnect.
 
-## Version 2.62 (built on 17.01.07)
+// Version 2.62 (built on 17.01.07)
   * Added null pointer check before calling modeToByte() in finishModeSwitchIfNecessary method for ModernRoboticsUsbDcMotorController class.
   * Changes to enhance Modern Robotics USB protocol robustness.
 
-## Version 2.61 (released on 16.12.19)
+// Version 2.61 (released on 16.12.19)
   * Blocks Programming mode changes:
      - Fix to correct issue when an exception was thrown because an OpticalDistanceSensor object appears twice in the hardware map (the second time as a LightSensor).
 
-## Version 2.6 (released on 16.12.16)
+// Version 2.6 (released on 16.12.16)
   * Fixes for Gyro class:
      - Improve (decrease) sensor refresh latency.
      - fix isCalibrating issues.
   * Blocks Programming mode changes:
      - Blocks now ignores a device in the configuration xml if the name is empty. Other devices work in configuration work fine.
 
-## Version 2.5 (internal release on released on 16.12.13)
+// Version 2.5 (internal release on released on 16.12.13)
   * Blocks Programming mode changes:
      - Added blocks support for AdafruitBNO055IMU.
      - Added Download Op Mode button to FtcBocks.html.
@@ -685,7 +685,7 @@ Changes include:
      - Added type safety to blocks for enums in AdafruitBNO055IMU.Parameters.
      - Added type safety to blocks for AndroidAccelerometer, AndroidGyroscope, AndroidOrientation, and AndroidTextToSpeech.
 
-## Version 2.4 (released on 16.11.13)
+// Version 2.4 (released on 16.11.13)
   * Fix to avoid crashing for nonexistent resources.
   * Blocks Programming mode changes:
      - Added blocks to support OpenGLMatrix, MatrixF, and VectorF.
@@ -718,10 +718,10 @@ Changes include:
   * Fixed inconsistency for AngularVelocity
   * Limit unbounded growth of data for telemetry.  If user does not call telemetry.update() for LinearOpMode in a timely manner, data added for telemetry might get lost if size limit is exceeded.
 
-## Version 2.35 (released on 16.10.06)
+// Version 2.35 (released on 16.10.06)
   * Blockly programming mode - Removed unnecesary idle() call from blocks for new project.
 
-## Version 2.30 (released on 16.10.05)
+// Version 2.30 (released on 16.10.05)
   * Blockly programming mode:
      - Mechanism added to save Blockly op modes from Programming Mode Server onto local device
      - To avoid clutter, blocks are displayed in categorized folders
@@ -744,7 +744,7 @@ Changes include:
   * Cleaned up device names in sample op modes to be consistent with Pushbot guide.
   * Fix to allow use of IrSeekerSensorV3.
 
-## Version 2.20 (released on 16.09.08)
+// Version 2.20 (released on 16.09.08)
   * Support for Modern Robotics Compass Sensor.
   * Support for Modern Robotics Range Sensor.
   * Revise device names for Pushbot templates to match the names used in Pushbot guide.
@@ -758,7 +758,7 @@ Changes include:
      - Support for Light Sensor.
      - Support for Servo Controller.
 
-## Version 2.10 (released on 16.09.03)
+// Version 2.10 (released on 16.09.03)
  * Support for Adafruit IMU.
  * Improvements to ModernRoboticsI2cGyro class
     - Block on reset of z axis.
@@ -778,7 +778,7 @@ Changes include:
  * Provides ability to disable audio cues.
  * various bug fixes and improvements.
 
-## Version 2.00 (released on 16.08.19)
+// Version 2.00 (released on 16.08.19)
  * This is the new release for the upcoming 2016-2017 FIRST Tech Challenge Season.
  * Channel change is enabled in the FTC Robot Controller app for Moto G 2nd and 3rd Gen phones.
  * Users can now use annotations to register/disable their Op Modes.
@@ -806,18 +806,18 @@ Changes include:
  * The logic to detect a runaway op mode (both in the LinearOpMode and OpMode types) and to abort the run, then auto recover has been improved/implemented.
  * Fix has been incorporated so that Logitech F310 gamepad mappings will be correct for Marshmallow users.
 
-## Release 16.07.08
+// Release 16.07.08
 
  * For the ftc_app project, the gradle files have been modified to support Android Studio 2.1.x.
 
-## Release 16.03.30
+// Release 16.03.30
 
  * For the MIT App Inventor, the design blocks have new icons that better represent the function of each design component.
  * Some changes were made to the shutdown logic to ensure the robust shutdown of some of our USB services.
  * A change was made to LinearOpMode so as to allow a given instance to be executed more than once, which is required for the App Inventor.
  * Javadoc improved/updated.
 
-## Release 16.03.09
+// Release 16.03.09
 
  * Changes made to make the FTC SDK synchronous (significant change!)
     - waitOneFullHardwareCycle() and waitForNextHardwareCycle() are no longer needed and have been deprecated.
@@ -849,7 +849,7 @@ Changes include:
  * Fix so Wifi Direct Config activity will no longer launch multiple times.
  * Added the ability to specify an alternate i2c address in software for the Modern Robotics gyro.
 
-## Release 16.02.09
+// Release 16.02.09
 
  * Improved battery checker feature so that voltage values get refreshed regularly (every 250 msec) on Driver Station (DS) user interface.
  * Improved software so that Robot Controller (RC) is much more resilient and “self-healing” to USB disconnects:
@@ -869,7 +869,7 @@ Changes include:
  * Improved javadoc generation.
  * Modified code to make it easier to support language localization in the future.
 
-## Release 16.01.04
+// Release 16.01.04
 
  * Updated compileSdkVersion for apps
  * Prevent Wifi from entering power saving mode
@@ -901,7 +901,7 @@ Changes include:
  * corrected "back" button keycode.
  * the notSupported() method of the GyroSensor class was changed to protected (it should not be public).
 
-## Release 15.11.04.001
+// Release 15.11.04.001
 
  * Added Support for Modern Robotics Gyro.
   - The GyroSensor class now supports the MR Gyro Sensor.
@@ -938,7 +938,7 @@ Changes include:
  * Updated javadoc documentation.
  * Updated release .apk files for Robot Controller and Driver Station apps.
 
-## Release 15.10.06.002
+// Release 15.10.06.002
 
  * Added support for Legacy Matrix 9.6V motor/servo controller.
  * Cleaned up build.gradle file.
@@ -946,7 +946,7 @@ Changes include:
  * Throws error if Ultrasonic sensor (NXT) is not configured for legacy module port 4 or 5.
 
 
-## Release 15.08.03.001
+// Release 15.08.03.001
 
  * New user interfaces for FTC Driver Station and FTC Robot Controller apps.
  * An init() method is added to the OpMode class.
