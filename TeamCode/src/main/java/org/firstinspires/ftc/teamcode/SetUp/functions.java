@@ -16,7 +16,6 @@ public class functions extends LinearOpMode {
     public DcMotor m_rightBack;
     public DcMotor m_rightFront;
     public DcMotor m_intake;
-    public DcMotor m_wobble;
     //Servos
     public Servo s_wobblegoal;
     public CRServo s_actuator;
@@ -39,9 +38,8 @@ public class functions extends LinearOpMode {
         m_rightBack = hardwareMap.get(DcMotor.class, "BRM");
         m_rightFront = hardwareMap.get(DcMotor.class, "FRM");
         m_intake = hardwareMap.get(DcMotor.class, "INTAKE");
-        m_wobble = hardwareMap.get(DcMotor.class, "WOBBLE_GOAL");
 
-       //Reversing some of the motor directions to make driving easier
+        //Reversing some of the motor directions to make driving easier
         m_leftFront.setDirection(DcMotor.Direction.REVERSE);
         m_leftBack.setDirection(DcMotor.Direction.REVERSE);
         m_rightBack.setDirection(DcMotor.Direction.FORWARD);
@@ -91,9 +89,9 @@ public class functions extends LinearOpMode {
 
     //    Strafing method (used for  strafing)
     public void Strafing(double power, int time) {
-        m_leftBack.setPower(power);
-        m_leftFront.setPower(-power);
-        m_rightBack.setPower(-power);
+        m_leftBack.setPower(-power);
+        m_leftFront.setPower(power);
+        m_rightBack.setPower(power);
         m_rightFront.setPower(-power);
         sleep(999);
         m_leftBack.setPower(0);
@@ -111,20 +109,4 @@ public class functions extends LinearOpMode {
     public void Actuator(double speed) {
         s_actuator.setPower(speed);
     }
-
-    //    Auto-intake for advanced shooting function
-    public void AIntake() {
-        m_intake.setPower(-1);
-    }
-
-    // WobbleGoal Motor
-    public void WobbleGoalM(double power){
-        if (gamepad1.b){
-            m_wobble.setPower(power);
-            sleep(999);
-        }
-        if (gamepad1.y){
-            m_wobble.setPower(-power);
-            sleep(999);
-        }
-    }}
+}
