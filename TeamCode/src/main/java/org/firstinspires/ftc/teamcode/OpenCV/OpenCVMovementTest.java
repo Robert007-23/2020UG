@@ -97,7 +97,7 @@ public class OpenCVMovementTest extends functions {
                 if (time >= 5 && time <= 6){
                 switch (orange){
                     case   0:
-                        Strafing(-0.5,500);
+                        Strafing(0.5,500);
                         movement(1,1,1221);
                         telemetry.clear();
                         telemetry.addLine("No orange");
@@ -111,7 +111,7 @@ public class OpenCVMovementTest extends functions {
                         telemetry.update();
                         break;
                     case 510:
-                        Strafing(-0.5,500);
+                        Strafing(0.5,500);
                         movement(1, 1,2250);
                         movement(-1,-1,200);
                         telemetry.clear();
@@ -119,7 +119,7 @@ public class OpenCVMovementTest extends functions {
                         telemetry.update();
                         break;
                     case 765:
-                        Strafing(-0.5,500);
+                        Strafing(0.5,500);
                         movement(1, 1,2350);
                         movement(-1,-1,-1000);
                         telemetry.clear();
