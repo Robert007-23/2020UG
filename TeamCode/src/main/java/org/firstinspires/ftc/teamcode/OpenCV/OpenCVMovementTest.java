@@ -97,27 +97,32 @@ public class OpenCVMovementTest extends functions {
                 switch (orange){
                     case   0:
                         Strafing(-0.5,500);
-                        movement(1,1,1250);
+                        movement(1,1,1500);
+                        movement(-1,-1,500);
                         telemetry.clear();
                         telemetry.addLine("No orange");
                         telemetry.update();
                         break;
                     case 255:
-                        movement(1, 1, 1500);
+                        movement(1, 1, 1900);
+                        Strafing(0.30, 250);
+                        movement(-1,-1,500);
                         telemetry.clear();
                         telemetry.addLine("A little orange");
                         telemetry.update();
                         break;
                     case 510:
                         Strafing(-0.5,500);
-                        movement(1, 1,2250);
+                        movement(1, 0.9,2550);
+                        movement(-1,-1,800);
                         telemetry.clear();
                         telemetry.addLine("Some orange");
                         telemetry.update();
                         break;
                     case 765:
                         Strafing(-0.5,500);
-                        movement(1, 1,2250);
+                        movement(1, 0.9,2550);
+                        movement(-1,-1,800);
                         telemetry.clear();
                         telemetry.addLine("All orange");
                         telemetry.update();

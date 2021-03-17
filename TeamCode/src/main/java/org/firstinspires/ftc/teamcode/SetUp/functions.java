@@ -92,13 +92,13 @@ public class functions extends LinearOpMode {
         m_leftBack.setPower(power);
         m_leftFront.setPower(-power);
         m_rightBack.setPower(-power);
-        m_rightFront.setPower(-power);
-        sleep(999);
+        m_rightFront.setPower(power);
+    sleep(999);
         m_leftBack.setPower(0);
         m_leftFront.setPower(0);
         m_rightBack.setPower(0);
         m_rightFront.setPower(0);
-    }
+}
 
     //    wobble goal servo method (Used to move the wobble goal servo)
     public void WobbleGoal(double pos) {
